@@ -53,5 +53,13 @@ The folder containing the test split file should look like this (for both tasks)
 
 Please note that a JSON file containing annotation for Task 1 and 2 **must** be named `test_data.json` and `task_2.json` respectively.
 
+## File structure:
+The model consists of 5 components:
+- COSMOS baseline: clone from [here](https://github.com/shivangi-aneja/COSMOS), placed in COSMOS folder.
+- Visual entailment: The code is placed in OFA folder.
+- Natural Language Inference (NLI): The component uses microsoft/deberta-xlarge-mnli model, the code can be found in [acmmm.py](acmmm.py) at line 15
+- Fabricated claim detection: The component calculate the similarity between 2 sentence using SBERT-WK. The code is included in [sbert.py](sbert.py) and [bert_utils.py](bert_utils.py)
+- Online Caption Checking: The code for crawling images online and calculate similarity between images in [online_search.py](online_search.py). Note: This file took quite long to run, you should expect for about 1 hour to finish
 
-
+Other files:
+- [predict.py](predict.py): Code for different inference strategies based on the output of all components.
